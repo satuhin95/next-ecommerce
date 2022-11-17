@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect } from 'react'
-import Layouts from './components/Layouts'
+import Layouts from '../components/Layouts'
 import {useForm} from 'react-hook-form'
 import{signIn, useSession} from 'next-auth/react'
 import {  toast } from 'react-toastify';
@@ -11,7 +11,7 @@ export default function LoginScreen() {
     const router = useRouter()
     const {redirect} = router.query;
     const {data: session} = useSession();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const submitHandler =async ({email, password})=>{
         try {
             const result = await signIn('credentials',{
@@ -38,11 +38,7 @@ export default function LoginScreen() {
             <h1 className='mb-4 text-xl'>Login</h1>
             <div className='mb-4'>
                 <label htmlFor='email'>Email</label>
-                <input type="email" {...register('email',{required: "Please enter email",
-                pattern:{
-                    value:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-                    message:"Please enter valid email"
-                }
+                <input type="email" {...register('email',{required: "Please enter email"
             })} className='w-full' id='email' autoFocus></input>
                 {errors.email && (<div className='text-red-500'>{errors.email.message}</div>)}
             </div>

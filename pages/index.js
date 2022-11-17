@@ -1,6 +1,5 @@
-import data from "../utils/data";
-import Layouts from "./components/Layouts";
-import ProductItem from "./components/ProductItem";
+import Layouts from '../components/Layouts';
+import ProductItem from '../components/ProductItem';
 import db from '../utils/db'
 import Product from "../models/Product";
 import axios from "axios";
@@ -28,6 +27,7 @@ export default function Home({products}) {
     toast.success('Product added to the cart')
     
   }
+  
   return (
     <Layouts title="Ecommerce Home Page">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Store, StoreProvider } from '../../utils/Store';
 import { ToastContainer } from 'react-toastify';
 import { signOut, useSession } from 'next-auth/react';
 import 'react-toastify/dist/ReactToastify.css'
 import { Menu } from '@headlessui/react'
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
+import { Store } from '../utils/Store';
 
 export default function Layouts({title, children}) {
   const {status, data:session} = useSession();

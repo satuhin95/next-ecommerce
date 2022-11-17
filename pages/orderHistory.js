@@ -2,7 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useReducer } from 'react'
 import { getError } from '../utils/error'
-import Layouts from './components/Layouts'
+import Layouts from '../components/Layouts'
 function reducer(state,action){
     switch (action.type) {
         case 'FATCH_REQUEST':

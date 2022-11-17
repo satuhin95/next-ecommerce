@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { Store } from '../utils/Store';
-import CheckoutWizard from './components/CheckoutWizard'
-import Layouts from './components/Layouts'
+import CheckoutWizard from '../components/CheckoutWizard'
+import Layouts from '../components/Layouts'
 
 export default function PaymentScreen() {
     const router = useRouter()
@@ -33,7 +33,7 @@ export default function PaymentScreen() {
             return router.push('/shipping')
         }
         setSelectPaymentMethod(paymentMethod || '')
-    },[router,setSelectPaymentMethod,paymentMethod])
+    },[router,setSelectPaymentMethod,paymentMethod,shippingAddress])
   return (
     <Layouts title="Payment Method">
         <CheckoutWizard activeStep={2}/>

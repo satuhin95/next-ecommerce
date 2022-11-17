@@ -1,6 +1,5 @@
-import  Router, {  useRouter } from 'next/router'
-import Layouts from '../components/Layouts';
-import data from '../../utils/data';
+import  {  useRouter } from 'next/router'
+import Layouts from '../../components/Layouts';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';

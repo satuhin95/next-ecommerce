@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useReducer } from "react";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
-import Layouts from "../components/Layouts";
+import Layouts from "../../components/Layouts";
 
     function reducer(state,action){
         switch (action.type) {
@@ -31,7 +31,7 @@ import Layouts from "../components/Layouts";
  function OrderScreen() {
     const {query} = useRouter();
     const orderId = query.id
-    const [{loading,error,order,successPay,loadingPay, errorPay},dispatch] = useReducer(reducer,{
+    const [{loading,error,order,successPay,loadingPay},dispatch] = useReducer(reducer,{
         loading:true,
         order:{},
         error:'',
@@ -53,8 +53,7 @@ import Layouts from "../components/Layouts";
             }
         }
         
-
-    },[,order,orderId,successPay])
+    },[order,orderId,successPay])
     const {
         shippingAddress,
         orderItems,
@@ -75,8 +74,8 @@ import Layouts from "../components/Layouts";
             dispatch({type:'PAY_SUCCESS', payload:data});
             toast.success('Order is Paid Successfully')
         } catch (error) {
-            dispatch({type:'PAY_FAIL', payload:getError(err)});
-            toast.success(getError(err))
+            dispatch({type:'PAY_FAIL', payload:getError(error)});
+            toast.success(getError(error))
         }
     }
   return(

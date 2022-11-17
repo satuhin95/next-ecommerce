@@ -17,7 +17,7 @@ const handler = async(req,res)=>{
 
        order.isPaid = true;
        order.paidAt  = Date.now();
-       const paidorder = await order.save();
+        await order.save();
        await db.disconnect();
        return res.send({message:"Order  paid Sussceefully"})
     }else{

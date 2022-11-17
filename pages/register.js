@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import React, { useEffect } from 'react'
-import Layouts from './components/Layouts'
+import Layouts from '../components/Layouts'
 import {useForm} from 'react-hook-form'
 import{signIn, useSession} from 'next-auth/react'
 import {  toast } from 'react-toastify';
-import { getError } from '../utils/error'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { getError } from '../utils/error'
 
 export default function RegisterScreen() {
     const router = useRouter()
@@ -27,7 +27,7 @@ export default function RegisterScreen() {
                 toast.error(result.error)
             }
         } catch (error) {
-            
+            toast.error(getError(error))
         }
     }
 
@@ -49,11 +49,7 @@ export default function RegisterScreen() {
         </div>
         <div className='mb-4'>
             <label htmlFor='email'>Email</label>
-            <input type="email" {...register('email',{required: "Please enter email",
-            pattern:{
-                value:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-                message:"Please enter valid email"
-            }
+            <input type="email" {...register('email',{required: "Please enter email"
         })} className='w-full' id='email' autoFocus></input>
             {errors.email && (<div className='text-red-500'>{errors.email.message}</div>)}
         </div>
